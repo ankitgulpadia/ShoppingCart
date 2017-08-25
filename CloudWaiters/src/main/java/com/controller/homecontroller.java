@@ -7,9 +7,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.UserDao;
+import com.dao.User_Roles;
+import com.model.Authority;
 import com.model.User;
 
 @Controller
@@ -18,6 +21,8 @@ public class homecontroller
 {
 @Autowired 
 UserDao userdao;
+@Autowired
+User_Roles authroritiesRole;
 
 	@RequestMapping("/")
 	public String index()
@@ -48,11 +53,23 @@ UserDao userdao;
 	
 	
 	@RequestMapping("/login")
-	public String login()
-	{
-		return "login";
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+	@RequestParam(value = "logout", required = false) String logout) {
+	 
+	       ModelAndView model = new ModelAndView();
+	     if (error != null) {
+	     model.addObject("error", "Invalid username and password!");
+	  }
+	 
+	         if (logout != null) {
+	        model.addObject("msg", "You've been logged out successfully.");
+	    }
+	         model.setViewName("login");
+	 
+	      return model;
+	 
+	 
 	}
-
 	/*@RequestMapping("/admin")
 	public String admin()
 	{
@@ -87,7 +104,12 @@ UserDao userdao;
 			//user.setRole("ROLE_USER");
 			                              //setRole will set the role of the user whether it is guest user or admin  //that's why the role is not defined in index page  ..in input box 
 			userdao.saveUser(user);
-			                                     //calling insertUser()  method that is written in UserDaoImpl class from controller class
+			Authority role=new Authority();
+			role.setRole("ROLE_USER");
+			role.setRole_id(user.getId());
+			role.setUsername(user.getUsername());
+			
+			authroritiesRole.addRole(role);                                 //calling insertUser()  method that is written in UserDaoImpl class from controller class
 			mav.setViewName("redirect:/login");  //means after the registration  is completed the SignIn page is loaded
 		   return mav;
 			

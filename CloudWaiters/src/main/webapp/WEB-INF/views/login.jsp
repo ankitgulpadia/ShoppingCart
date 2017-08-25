@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -68,17 +71,17 @@ span.psw {
 
 <h2>Login</h2>
 
-<form action="/action_page.php">
+  <form name='/login'action="<c:url value='/login'/>" method='POST'>
   <div class="login">
         <div class="item active">
             <img src="resources/iphone all" alt="First">
         </div>
   <div class="container">
     <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="username" required>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
         
     <button type="submit">Login</button>
     <input type="checkbox" checked="checked"> Remember me

@@ -25,10 +25,17 @@ public class User implements Serializable{
 	private String username;
     private String address;
 	private String state;
-	private String role;
+	//private String role;
 	private String gender;
+	private boolean Enable=true;
 
 	
+		public boolean isEnable() {
+		return Enable;
+	}
+	public void setEnable(boolean enable) {
+		Enable = enable;
+	}
 		public int getId() {
 		return id;
 	}
@@ -66,18 +73,19 @@ public class User implements Serializable{
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getRole() {
+	/*public String getRole() {
 		return role;
 	}
 	public void setRole(String role) {
 		this.role = role;
-	}
+	}*/
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 }
 	
 	

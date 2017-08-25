@@ -12,13 +12,23 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+  
 
 <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: auto;
-      margin: auto;
+.carousel-inner img
+{
+ width:200%;/*set width to 70% */ 
+min-height:300px;
+max-height:220px;
+}
+body
+{
+background-image:url("https://transcomdigital.com/Content/Images/uploaded/1.%20SAMSUNG%20GALAXY%20S8/gifs/unnamed.gif");
+}
+</style>
+</head>
+<body>
+ 
   }
   </style>
 </head>
@@ -28,6 +38,7 @@ document.getElementById("logout").submit();
 }
 </script>
 <body>
+
 
 <nav class ="navbar navbar-default">
  
