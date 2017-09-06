@@ -1,5 +1,5 @@
 package com.model;
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +12,8 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table
 @Component
-public class Supplier implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Supplier{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;

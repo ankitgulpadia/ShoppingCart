@@ -11,31 +11,12 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <jsp:include page="navbar.jsp"></jsp:include>
- <style>
-/*add a gray background colour and some padding to the footer */
-footer{
-background-colour: brown;
-padding: 50px;
-}
-.carousel-inner img
-{
- width:100%;/*set width to 100%*/
-min-height:300px;
-max-height:220px;
-}
-body
-{
-background-image:url("https://media.giphy.com/media/3osxYdOqKJsgxSqJk4/giphy.gif");
-}
-</style>
+  
+ 
+
 </head>
 <body>
 <br>
-<br> 
-<br>
-<br>
-<br>
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
@@ -47,24 +28,26 @@ background-image:url("https://media.giphy.com/media/3osxYdOqKJsgxSqJk4/giphy.gif
     <!-- Wrapper for carousel items -->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="resources/one.jpg" alt="First Slide">
+        <img src="resources/vivo.jpg" alt="First Slide">
+        </div>
+       
+        <div class="item">
+            <img src="resources/vivo.jpg" alt="First Slide">
         </div>
         <div class="item">
-            <img src="resources/vivo.jpg" alt="Second Slide">
+            <img src="resources/vivo.jpg" alt="Secound Slide">
         </div>
         <div class="item">
-            <img src="resources/iphone all.jpg" alt="Third Slide">
+            <img src="resources/mobiles.png" alt="Third Slide">
         </div>
         <div class="item">
             <img src="resources/mobiles.png" alt="fourth Slide">
         </div>
-    </div>
     <br>
-    
-    <footer class="container-fluid text-center">
-
-</footer>
-    
+    <br>
+    <br>
+    <br>
+    <br>
     
     <!-- Carousel controls -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">
@@ -73,8 +56,22 @@ background-image:url("https://media.giphy.com/media/3osxYdOqKJsgxSqJk4/giphy.gif
     <a class="carousel-control right" href="#myCarousel" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
+    <footer class="container-fluid text-center">
+
+</footer>
     
     
 </div>
+
+<br>
+<br>
+<br>
+<br>
+  <jsp:include page="footer.jsp"></jsp:include>
+
+<%--  <jsp:include page="contact us.jsp"></jsp:include>
+ --%>
+
+
 </body>
 </html>

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.model.Category;
 import com.model.Product;
+import com.model.Supplier;
 import com.model.User;
 
 
@@ -60,6 +61,7 @@ public class Hibernate_config {
 	sessionBuilder.addAnnotatedClass(User.class);
 	sessionBuilder.addAnnotatedClass(Product.class);
 	sessionBuilder.addAnnotatedClass(Category.class);
+	sessionBuilder.addAnnotatedClass(Supplier.class);
 	
 	
 	sessionBuilder.scanPackages("com.model");

@@ -64,18 +64,27 @@
     
    
     
-   
+   <tr>
+   <td>
+       <form:label path="specification">
+                <spring:message text="specification"/>
+            </form:label>
+   </td>
+   <td>
+   <form:input path ="specification"/>
+   </td>
+   </tr>
     
-   <%--  <tr>
+     <tr>
         <td>
-            <form:label path="description">
-                <spring:message text="description"/>
+            <form:label path="highlights">
+                <spring:message text="highlights"/>
             </form:label>
         </td>
         <td>
-            <form:input path="description" />
+            <form:input path="highlights" />
         </td>
-         --%>
+         
         
     <tr>
 				<td><form:label path="category">
@@ -87,10 +96,11 @@
  
      <tr>
 				<td><form:label path="supplier">
-						<spring:message text="Supplier" />
+						<spring:message text="supplier" />
 					</form:label></td>
-					<td><form:select path="supplier.name" items="${listsupplier}"
-					itemValue="name" itemLabel="name" /></td>
+					<td><form:select path="supplier.name" items="${suppliers}"
+					itemValue="name" itemLabel="name" />
+					</td>
      </tr> 
         
        
@@ -104,7 +114,7 @@
             <form:input type="file" path="image" />
         </td></tr> 
     
-   
+    
     
     
     
@@ -128,30 +138,31 @@
 </form:form>
 <h3>List of Products</h3>
 
-<c:if test="${not empty listproduct}">
+<c:if test="${not empty products}">
   <table class="table">
   <thead class="thead-inverse">
     <tr>
         <th width="160">Name</th>
       
         <th width="80">price</th>
-        <th width="80">categoryname</th>
-          <th width="80">suppliername</th>
          <th width="120">image</th>
+         <th width="80">categoryname</th>
+          <th width="80">suppliername</th> 
+        
          
          <th width="140">Action</th>
           <th width="160">Action</th>
     </tr> </thead>
-    <c:forEach items="${listproduct}" var="product">
+    <c:forEach items="${products}" var="product">
         <tr>
          
             <td>${product.name}</td>
             
             <td>${product.price}</td>
-           
+           <td><img src="<c:url value='/resources/${product.id}.jpg'/>" class="image-responsive" height="50" width="50"/></td>
            <td>${product.category.categoryName}</td>
 					<td>${product.supplier.name}</td>
-         
+          
              
            <td><a href="<c:url value='/edit/${product.id}'/>" >Edit</a></td>
             <td><a href="<c:url value='/remove/${product.id}'/>" >Delete</a></td>

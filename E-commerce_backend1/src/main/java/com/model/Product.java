@@ -3,6 +3,7 @@ package com.model;
 import java.io.Serializable;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 //import javax.validation.constraints.Min;
 import javax.persistence.Transient;
 
@@ -20,15 +22,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 @Component
 @Entity
+@Table(name="Product")
 
 public class Product implements Serializable {
 /**
 * 
 */
-private static final long serialVersionUID = -394001576741655012L;
+private static final long serialVersionUID = 1L;
 
 @Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
+@GeneratedValue(strategy=GenerationType.AUTO)
 private int id;
 private String name;
 private int price;
@@ -41,6 +44,30 @@ private Category category;
 @ManyToOne
 @JoinColumn(name = "supplier_id", nullable = false, updatable = false, insertable = false)
 private Supplier supplier;
+private String specification;
+private String Highlights;
+
+
+
+public String getSpecification() {
+	return specification;
+}
+
+public void setSpecification(String specification) {
+	this.specification = specification;
+}
+
+public String getHighlights() {
+	return Highlights;
+}
+
+public void setHighlights(String highlights) {
+	Highlights = highlights;
+}
+
+
+
+
 
 public Category getCategory() {
 return category;

@@ -6,9 +6,35 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">MOBILE STORE</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">MOBILES</a></li>
+      <li><a href="#">ACCESSORIES</a></li>
+      <li><a href="#">CONTACT US</a></li>
+    </ul>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration</title>
 </head>
+<br>
+<br>
+<br>
+
+
 <body>
     <div align="center">
         <form:form action="register" method="post" commandName="user">
@@ -59,44 +85,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<br>
-<br>
-<br>
-<div class="container"> 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-       <img src="iph.jpg" alt="First Slide">
-        </div>
-
-      <div class="item">
-        <img src="iphone all.jpg" alt="Chicago">
-      </div>
-    
-      <div class="item">
-        <img src="resources/book.jpg" alt="Chicago">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
 
 </body>
 </html>

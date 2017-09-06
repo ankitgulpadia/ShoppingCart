@@ -1,6 +1,5 @@
 package com.controller;
 
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -26,132 +25,114 @@ import com.model.Category;
 import com.model.Product;
 import com.model.Supplier;
 
-
 @Controller
 public class productcontroller {
-	
-@Autowired
-       private ProductDao productdao;
-@Autowired
-private CategoryDao categorydao;
-@Autowired
-private SupplierDao supplierdao;
-int k=0;
 
-public productcontroller(){
-	System.out.println("ProductController instantiated");
-}
+	@Autowired
+	private ProductDao productdao;
+	@Autowired
+	private CategoryDao categorydao;
+	@Autowired
+	private SupplierDao supplierdao;
 
-
-
-	
-/* REQUEST MAPPING OF OF ADMIN PAGE FOR GETTING PRODUCT FORM*/
-    @RequestMapping("/addproduct")
-	public String productform(Model model,HttpSession session){
-    	
-    		List<Product> products=productdao.getAllProducts();
-        	for(Product p:products)
-        	{
-        		System.out.println("Categrory id is" +p.getCategory_id());
-        		System.out.println("productname is" +p.getName());
-        	}
-        		
-    		model.addAttribute("product",new Product());
-        	//session.setAttribute("listproduct",products);
-        	model.addAttribute("listproduct",products);
-        	model.addAttribute("category",categorydao.list());
-        	model.addAttribute("listsupplier",supplierdao.List());
-        	return "addproduct";
-
-}
-    @RequestMapping(value= "/product/add",method=RequestMethod.POST)
-	public String saveProduct (@ModelAttribute("product")Product product,HttpServletRequest request,RedirectAttributes redirectAttributes){
-	System.out.println("product id " +k);
-	System.out.println("product id " +product.getId());
-	HttpSession s = request.getSession();
-    
-    	Category category = categorydao.getCategoryByName(product.getCategory().getCategoryName());
-    		
-    		Supplier supplier = supplierdao.getSupplierByName(product.getSupplier().getName());
-    		
-    		 
-    		product.setCategory(category);
-    		product.setSupplier(supplier);
-    		product.setCategory_id(category.getId());
-    		product.setSupplier_id(supplier.getId());
-    		if(product.getId()==0)
-    		{
-  System.out.println("add product");
-    		productdao.save(product);
-    	/* MultipartFile file=product.getImage();
-    	     //  String originalfile=file.getOriginalFilename();
-    	       	String fileloc=s.getServletContext().getRealPath("/resource/images/");
-    	       	System.out.println(fileloc);
-    	      String filename=fileloc+"\\"+product.getId()+".jpg";
-    	      System.out.println(filename);
-    	      
-    	    try{
-    	    	  byte b[]=file.getBytes();
-    	     FileOutputStream fos=new FileOutputStream(filename);
-    	     fos.write(b);
-    			fos.close();
-    			System.out.println(filename);
-    			
-    			} catch (IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-    	    	   catch (Exception e) {
-    	   			// TODO Auto-generated catch block
-    	   			e.printStackTrace();
-    	   		}
-    	    	   */
-    	    	
-    	        }
-    	else
-    		//if(k>0)
-    	{
-    		
-    		System.out.println("edit product");
-    		productdao.update(product);
-    	}
-		return "redirect:/addproduct";
-		
+	public productcontroller() {
+		System.out.println("ProductController instantiated");
 	}
 
-	
+	/* REQUEST MAPPING OF OF ADMIN PAGE FOR GETTING PRODUCT FORM */
+	@RequestMapping("/addproduct")
+	public String productform(Model model, HttpSession session) {
+
+		List<Product> products = productdao.getAllProducts();
+		for (Product p : products) {
+			System.out.println("categrory id is" + p.getCategory_id());
+			System.out.println("productname is" + p.getName());
+		}
+		model.addAttribute("product", new Product());
+		model.addAttribute("products", products);
+		// model.addAttribute("categorys",categorydao.list());
+		// model.addAttribute("Supplier",supplierdao.List());
+		return "addproduct";
+
+	}
+
+	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
+	public String saveProduct(@ModelAttribute("product") Product product, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+
+		HttpSession s = request.getSession();
+
+		Category category = categorydao.getCategoryByName(product.getCategory().getCategoryName());
+		// categoryDAO.save(category);
+		Supplier supplier = supplierdao.getSupplierByName(product.getSupplier().getName());
+		// supplierDAO.save(supplier);
+
+		product.setCategory(category);
+		product.setSupplier(supplier);
+		product.setCategory_id(category.getId());
+		product.setSupplier_id(supplier.getId());
+		if (product.getId() == 0) {
+
+			productdao.save(product);
+			MultipartFile file = product.getImage();
+			// String originalfile=file.getOriginalFilename();
+			String fileloc = s.getServletContext().getRealPath("/resources");
+			System.out.println(fileloc);
+			String filename = fileloc + "\\" + product.getId() + ".jpg";
+			System.out.println(filename);
+
+			try {
+				byte b[] = file.getBytes();
+				FileOutputStream fos = new FileOutputStream(filename);
+				fos.write(b);
+				fos.close();
+				System.out.println(filename);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else
+
+		{
+
+			System.out.println("edit product");
+			productdao.update(product);
+		}
+		return "redirect:/adminHome/manageProducts";
+
+	}
+
 	@RequestMapping("/edit/{id}")
-	  public String update(@PathVariable("id") int id,Model model)
-	  {
-		k=id;
+	public String update(@PathVariable("id") int id, Model model) {
+
 		System.out.println("edit");
-		 model.addAttribute("product",productdao.getProductBYID(id));
-		
-		 
-		 // model.addAttribute("listProducts",productdao.getAllProducts());
-	     
-		  return "addproduct";
-	  }
-	
+		model.addAttribute("product", productdao.getProductBYID(id));
 
-	
-	
-	@RequestMapping("/remove/{id}")
-	  public String remove(@PathVariable("id") int id)
-	  {
-		productdao.delete(id);
-	     
-		  return "redirect:/addproduct";
-	  }
-    
-	@RequestMapping("/showproduct/{id}")
-	public String getselectedproductdetails(@PathVariable("id")int id,Model model)
-	{
-		Product product=productdao.getProductBYID(id);
-		model.addAttribute("product", product);
-		return "showproduct";
-		
+		model.addAttribute("categorys", categorydao.list());
+		model.addAttribute("suppliers", supplierdao.List());
+		// model.addAttribute("listProducts",productdao.getAllProducts());
+
+		return "addproduct";
 	}
-	
 
-    }
+	@RequestMapping("/remove/{id}")
+	public String remove(@PathVariable("id") int id) {
+		productdao.delete(id);
+
+		return "redirect:/addproduct";
+	}
+
+	@RequestMapping("/showproduct/{id}")
+	public String getselectedproductdetails(@PathVariable("id") int id, Model model) {
+		Product product = productdao.getProductBYID(id);
+		model.addAttribute("product", product);
+		return "redirect:/adminHome/manageproduct";
+
+	}
+
+}

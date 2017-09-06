@@ -19,7 +19,7 @@ import com.model.Supplier;
 @Controller
 public class Suppliercontroller {
 	@Autowired
-	private SupplierDao supplierDao;
+	private SupplierDao SupplierDao;
 	
 
 	
@@ -29,7 +29,7 @@ public class Suppliercontroller {
 	{ 
 		
 		
-		List<Supplier> list=supplierDao.List();
+		List<Supplier> list=SupplierDao.List();
 		for(Supplier s:list)
 		{
 			System.out.println("address is" +s.getAddress());
@@ -51,16 +51,18 @@ public class Suppliercontroller {
 	if(supplier.getId()==0)
 	{
 
-		supplierDao.save(supplier);
+		SupplierDao.save(supplier);
 	}
 	else
 	{
-		supplierDao.update(supplier);
+		SupplierDao.update(supplier);
 	}
 
 	
-	//  return "redirect:/categoryTable";
-	  return "redirect:/AdminHome";
+	  return "redirect:/adminHome/manageSuppliers";
+	 // return "${session.getContextPath()}/CloudWaiters/addsupplier";
+	
+
 	}
 	
 	
@@ -68,19 +70,20 @@ public class Suppliercontroller {
 	@RequestMapping(value="/editSupplier/{id}")
 	public String editP(@ModelAttribute("id") int id,Model model)
 	{
-		model.addAttribute("Supplier", supplierDao.get(id));
+		model.addAttribute("supplier", SupplierDao.get(id));
 		
-		return "AdminHome";
+	//	return "AdminHome";
+		return "addsupplier";
 	}
 	
  
 	@RequestMapping(value="/deleteSupplier/{id}")
-	public String deleteCategory(@PathVariable("id") int id,Model model)
+	public String deletesupplier(@PathVariable("id") int id,Model model)
 	{
 		
-		supplierDao.delete(id);
+		SupplierDao.delete(id);
 	   
-		return "redirect:/AdminHome";
+		return "redirect:/adminHome/manageSuppliers";
 	}
  
 	

@@ -36,21 +36,12 @@ User_Roles authroritiesRole;
 		return "index";
 		
 	}
-	
-	@RequestMapping("/navbar")
-	public String navabarpage()
+	@RequestMapping("/Contact")
+	public String contact()
 	{
-		return "navbar";
+		return "contactus";
 		
 	}
-	
-	
-	@RequestMapping("/header")
-	public String header()
-	{
-		return "header";
-	}
-	
 	
 	@RequestMapping("/login")
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,

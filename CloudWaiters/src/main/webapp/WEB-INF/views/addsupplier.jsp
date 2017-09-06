@@ -6,10 +6,11 @@
 
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page isELIgnored="false" %>
 
 <%@include file ="AdminHome.jsp" %>
-<br><br><br><br>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,7 +27,7 @@
 </h1>
 
 <c:url var="addsupplier" value="/newSupplier" ></c:url>
-<form:form action="${addsupplier}" commandName="supplier" modelAttribute="supplier"   method="post" >
+<form:form action="${addsupplier}" commandName="supplier" modelAttribute="supplier" method="post" >
 <table>
     <c:if test="${!empty supplier.name}">
     
@@ -83,7 +84,7 @@
 </form:form>
 <h3>List of Suppliers</h3>
 
-<c:if test="${not empty listsupplier}">
+<c:if test="${not empty suppliers}">
     <table class="table table-bordered">
     <tr>
         <th width="160">Name</th>
@@ -92,7 +93,7 @@
        <th width="200">Edit</th>
        <th width="220">Delete</th>
     </tr>
-    <c:forEach items="${listsupplier}" var="supplier">
+    <c:forEach items="${suppliers}" var="supplier">
         <tr>
          
             <td>${supplier.name}</td>

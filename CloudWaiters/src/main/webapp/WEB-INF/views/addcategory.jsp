@@ -10,7 +10,7 @@
 
 
 <%@include file ="AdminHome.jsp" %> 
-<br><br><br><br>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -114,7 +114,7 @@
        
            <td><a href="<c:url value='/editCategory/${category.id}'/>" >Edit</a></td>
             <td><a href="<c:url value='/deleteCategory/${category.id}'/>" >Delete</a></td>
-            </td>
+            
         </tr>
     </c:forEach>
     </table>

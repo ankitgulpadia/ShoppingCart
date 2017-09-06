@@ -67,15 +67,42 @@ span.psw {
     }
 }
 </style>
-<body>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-<h2>Login</h2>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">MOBILE STORE</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">MOBILES</a></li>
+      <li><a href="#">ACCESSORIES</a></li>
+      <li><a href="#">CONTACT US</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+        <li><a href="sigin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      </ul>
+
+<br>
+<br>
+<br>
 
   <form name='/login'action="<c:url value='/login'/>" method='POST'>
   <div class="login">
-        <div class="item active">
-            <img src="resources/iphone all" alt="First">
-        </div>
+        
   <div class="container">
     <label><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username" required>

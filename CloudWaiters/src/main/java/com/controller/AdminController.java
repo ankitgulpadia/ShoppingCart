@@ -24,17 +24,18 @@ public class AdminController {
 	@Autowired
 	SupplierDao  supplierDao;
 	
-	@RequestMapping("/admin")
+	@RequestMapping("/AdminHome")
 	public String admin()
 	{
-		return "admin";
+		return "AdminHome";
 	}
 	
-	
+	/*
 	@RequestMapping("/AdminHome")
 	public String adminHome(){
 	return "AdminHome";
-	}
+	}*/
+	
 	@RequestMapping("/adminHome/manageCategories")
 	public ModelAndView categories(){
 	ModelAndView mv = new ModelAndView("addcategory");
@@ -43,14 +44,18 @@ public class AdminController {
 	mv.addObject("categorys", categoryDao.list());
 	return mv;
 	}
+	
 	@RequestMapping("/adminHome/manageProducts")
 	public ModelAndView products(){
 	ModelAndView mv = new ModelAndView("/addproduct");
 	mv.addObject("product", new Product());
 	mv.addObject("isAdminClickedProducts", "true");
-	mv.addObject("listproduct", productdao.getAllProducts());
+	mv.addObject("products",productdao.list());
+	
+	/*mv.addObject("listproduct", productdao.getAllProducts());*/
 	mv.addObject("categorys", categoryDao.list());
-	mv.addObject("listsupplier", supplierDao.List());
+	mv.addObject("suppliers", supplierDao.List());
+	/*mv.addObject("listsupplier", supplierDao.List());*/
 	return mv;
 	}
 	@RequestMapping("/adminHome/manageSuppliers")
@@ -58,7 +63,7 @@ public class AdminController {
 	ModelAndView mv = new ModelAndView("/addsupplier");
 	mv.addObject("supplier", new Supplier());
 	mv.addObject("isAdminClickedsupplier", "true");
-	mv.addObject("listsupplier", supplierDao.List());
+	mv.addObject("suppliers", supplierDao.List());
 
 	return mv;
 	}
