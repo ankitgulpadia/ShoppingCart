@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dao.ProductDao;
 import com.dao.UserDao;
 import com.dao.User_Roles;
 import com.model.Authority;
+import com.model.Product;
 import com.model.User;
 
 @Controller
@@ -21,6 +25,8 @@ public class homecontroller
 {
 @Autowired 
 UserDao userdao;
+@Autowired
+private ProductDao productdao;
 @Autowired
 User_Roles authroritiesRole;
 
@@ -35,6 +41,14 @@ User_Roles authroritiesRole;
 	{
 		return "index";
 		
+		
+	}
+		@RequestMapping("/home")
+		public String home()
+		{
+			return "index";
+
+			
 	}
 	@RequestMapping("/Contact")
 	public String contact()
@@ -42,6 +56,24 @@ User_Roles authroritiesRole;
 		return "contactus";
 		
 	}
+	@RequestMapping("/mobilephones")
+	public String mobilephones(Model model)
+	{
+			List<Product> products = productdao.getAllProducts();
+		for (Product p : products) {
+			System.out.println("categrory id is" + p.getCategory_id());
+			System.out.println("productname is" + p.getName());
+		}
+		model.addAttribute("product", new Product());
+		model.addAttribute("products", products);
+		// model.addAttribute("category",categorydao.list());
+		// model.addAttribute("Supplier",supplierdao.List());
+		return "mobilephones";
+		
+	}
+
+
+
 	
 	@RequestMapping("/login")
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,

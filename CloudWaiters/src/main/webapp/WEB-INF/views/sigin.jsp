@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">MOBILE STORE</a>
@@ -27,22 +27,22 @@
       <li><a href="#">ACCESSORIES</a></li>
       <li><a href="#">CONTACT US</a></li>
     </ul>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registration</title>
-</head>
-<br>
-<br>
-<br>
 
+<br>
+<br>
+<br> -->
+<%@include file="navbar.jsp" %>
 
 <body>
     <div align="center">
         <form:form action="register" method="post" commandName="user">
             <table border="0">
                 <tr>
-                    <td colspan="2" align="center"><h2>Signup We do not share your personal details with anyone</h2></td>
+                    <td colspan="2" align="center"><h2>REGISTRATION</h2></td>
+                    
                 </tr>
                 <tr>
+                
                     <td>User Name:</td>
                     <td><form:input path="username" /></td>
                 </tr>

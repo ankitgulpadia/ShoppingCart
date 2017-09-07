@@ -35,9 +35,10 @@ input[type=submit]:hover {
 }
 </style>
 </head>
+<%@include file="navbar.jsp" %>
 <body>
 
-<h3>Contact Form</h3>
+
 
 <div class="container">
   <form:form action="savecontact" method="post" commandName="contact">
