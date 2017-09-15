@@ -42,7 +42,7 @@ document.getElementById("logout").submit();
  
 <ul class ="nav navbar-nav mr-auto">
  
-<li><a id="OnePlus+" class ="navbar-brand" href ="#">MOBILE STORE</a></li>
+<li><a id="MOBILE STORE" class ="navbar-brand" href ="#">MOBILE STORE</a></li>
 <li><a id ="z" href ="AdminHome">Home</a></li>
 <li> <a href="${session.getContextPath()}/CloudWaiters/adminHome/manageCategories">category</a></li>
 <li> <a href="${session.getContextPath()}/CloudWaiters/adminHome/manageProducts">product</a></li>

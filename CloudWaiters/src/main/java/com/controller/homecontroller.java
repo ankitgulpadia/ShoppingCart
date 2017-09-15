@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,19 +38,41 @@ User_Roles authroritiesRole;
 		
 	}
 	@RequestMapping("/index")
-	public String indexpage()
+	public String indexpage(Model model)
 	{
+		List<Product>products=productdao.getAllProducts();
+		model.addAttribute("listProduct",products);
 		return "index";
-		
-		
 	}
-		@RequestMapping("/home")
-		public String home()
-		{
-			return "index";
-
 			
+	@RequestMapping("/showproduct/{id}")
+	public String getselectedproductdetails(@PathVariable("id")int id,Model model)
+	{
+	Product product=productdao.getProductBYID(id);
+	model.addAttribute("product", product);
+	return "showproduct";
 	}
+
+	//@RequestMapping("/home")
+//	public String homepage()
+	//{
+		
+	//	return "home";
+	//}
+	
+	
+	
+	
+	@RequestMapping("thankyou")
+	public String thankyou(){
+		return "thankyou";
+	}
+		
+	
+	
+	
+			
+
 	@RequestMapping("/Contact")
 	public String contact()
 	{

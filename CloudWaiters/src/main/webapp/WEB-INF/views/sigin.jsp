@@ -24,8 +24,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">MOBILES</a></li>
-      <li><a href="#">ACCESSORIES</a></li>
-      <li><a href="#">CONTACT US</a></li>
+      <li><a href="#">MobilePhones</a></li>
+      <li><a href="contact">CONTACT US</a></li>
     </ul>
 
 <br>

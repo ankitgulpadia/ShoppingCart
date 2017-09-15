@@ -114,11 +114,6 @@
             <form:input type="file" path="image" />
         </td></tr> 
     
-    
-    
-    
-    
-     
        
  <%--   </tr>--%>
     <tr>

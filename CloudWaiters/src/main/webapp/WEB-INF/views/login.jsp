@@ -84,10 +84,9 @@ span.psw {
       <a class="navbar-brand" href="#">MOBILE STORE</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">MOBILES</a></li>
-      <li><a href="#">ACCESSORIES</a></li>
-      <li><a href="#">CONTACT US</a></li>
+      <li class="active"><a href="http://localhost:8080/CloudWaiters/">Home</a></li>
+      <li><a href="mobilephones">MobilePhones</a></li>
+      <li><a href="Contact">CONTACT US</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
      

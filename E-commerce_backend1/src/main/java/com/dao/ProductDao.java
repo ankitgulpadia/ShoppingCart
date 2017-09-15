@@ -8,7 +8,7 @@ import com.model.Product;
 
 public interface ProductDao {
 	public List<Product>list();
-	 List<Product>getAllProducts();
+	public  List<Product>getAllProducts();
 	public boolean save(Product product);
 	public boolean update(Product product);
 	public boolean delete(int id);

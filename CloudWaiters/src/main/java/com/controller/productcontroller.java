@@ -127,12 +127,6 @@ public class productcontroller {
 		return "redirect:/addproduct";
 	}
 
-	@RequestMapping("/showproduct/{id}")
-	public String getselectedproductdetails(@PathVariable("id") int id, Model model) {
-		Product product = productdao.getProductBYID(id);
-		model.addAttribute("product", product);
-		return "redirect:/adminHome/manageproduct";
-
-	}
+	
 
 }

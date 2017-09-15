@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE htnl>
 <html lang="en">
 <head>
@@ -12,11 +13,24 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <jsp:include page="navbar.jsp"></jsp:include>
   
- 
+<style>
+footer {
+background-colour:#b49d9d;
+padding 25px;
+}
+.carousel-inner img{
+width:100%;/*set width to 100%*/
+min-height:300px;
+max-height:220px;
+}
+body
+{
+background-image:url("");
 
+}
+</style>
 </head>
 <body>
-<br>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
@@ -28,7 +42,7 @@
     <!-- Wrapper for carousel items -->
     <div class="carousel-inner">
         <div class="item active">
-        <img src="resources/vivo.jpg" alt="First Slide">
+        <img src="resources/img.jpg" alt="First Slide">
         </div>
        
         <div class="item">
@@ -43,11 +57,7 @@
         <div class="item">
             <img src="resources/mobiles.png" alt="fourth Slide">
         </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+        
     
     <!-- Carousel controls -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">
@@ -56,17 +66,33 @@
     <a class="carousel-control right" href="#myCarousel" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
-    <footer class="container-fluid text-center">
+  <!--   <footer class="container-fluid text-center"> -->
 
-</footer>
-    
-    
+
+	<br/><br/><br/><br/></div>
+	
+<c:forEach var="prod" items="${listProduct}">
+<td><%-- <c:if test="${prod.category.categoryName =='Mobile phone'}"> --%><a href="showproduct/${prod.id}">
+<div class="col-md-4">
+<img src = "<c:url value ='/resources/${prod.id}.jpg'/>" height="200" width="200"/></a><br>
+<c:url var="action" value="/product1"></c:url>
+
+<form:form action="${action}" modelAttribute="cart">
+<td id="td1"><i>Product name is <br/><c:out value="${prod.name}" /><br/>
+<td id="td1"><i>product price is RS. <c:out value="${prod.price}" /><br/><br/>
+<!-- <input type="submit" class="btn btn-primary" value="Add To Cart" /> -->
+</form:form></td>
 </div>
+<%-- <a href="<c:url value='/viewDetails?id=${prod.id}' />" class ="btn btn-success" >View</a> --%><%-- </c:if> --%></td>
 
-<br>
-<br>
-<br>
-<br>
+
+</c:forEach>
+
+<!-- </footer> -->
+    
+    
+
+
   <jsp:include page="footer.jsp"></jsp:include>
 
 <%--  <jsp:include page="contact us.jsp"></jsp:include>
